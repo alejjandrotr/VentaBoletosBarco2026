@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-arctic-primary: #5289AD;
+  --color-arctic-dark: #243C4C;
+  --color-arctic-muted: #ACBCBF;
+  --color-arctic-light: #F4FCFB;
+  --color-arctic-slate: #698696;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: #F4FCFB;
+  color: #243C4C;
+  margin: 0;
+}
