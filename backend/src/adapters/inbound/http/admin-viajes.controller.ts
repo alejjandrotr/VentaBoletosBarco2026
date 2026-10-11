@@ -12,7 +12,7 @@ import {
   NotFoundException,
   Inject,
 } from '@nestjs/common';
-import {
+import type {
   ViajeDetalleAdminDTO,
   CambiarEstadoViajeDTO,
 } from '@ports/inbound/admin-viajes.dto.js';
