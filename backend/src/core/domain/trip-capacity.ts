@@ -84,4 +84,9 @@ export class TripCapacity {
       isFull: availableSeats === 0,
     };
   }
+
+  public getSoldSeats(): number {
+    return this.soldSeats;
+  }
+
 }
