@@ -1,0 +1,46 @@
+name: Deploy Backend to EC2 (In-Place Update)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+
+jobs:
+  deploy:
+    name: Despliegue In-Place en AWS EC2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar despliegue remoto vía SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+
+            echo ">>> [1/5] Accediendo al directorio del backend..."
+            cd ${{ secrets.PROJECT_PATH }}
+
+            echo ">>> [2/5] Descargando ultimos cambios de Git..."
+            git fetch --all
+            git reset --hard origin/main
+
+            echo ">>> [3/5] Instalando dependencias..."
+            npm install
+
+            echo ">>> [4/5] Compilando aplicacion NestJS..."
+            npm run build
+
+            echo ">>> [5/5] Reiniciando servicio con PM2..."
+            pm2 restart backend-boletos || pm2 start dist/main.js --name "backend-boletos"
+
+            echo ">>> Estado de los procesos:"
+            pm2 status

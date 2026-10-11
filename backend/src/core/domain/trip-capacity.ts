@@ -89,4 +89,7 @@ export class TripCapacity {
     return this.soldSeats;
   }
 
+  public getTotalCapacity(): number {
+    return this.transportUnit.getTotalCapacity();
+  }
 }

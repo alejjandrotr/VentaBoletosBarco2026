@@ -3,7 +3,7 @@
 ## 1. Metadata
 - **ID:** SPEC-009
 - **Título:** Casos de Uso y Endpoints Administrativos para Gestión de Reglas de Itinerario
-- **Estado:** APROBADO
+- **Estado:** VERIFICADO
 - **Dependencias:** SPEC-007 (Modelado de Reglas de Itinerario y Puertos/Rutas)
 - **Fecha:** 2026-10-04
 - **Autor:** Antigravity AI & Desarrollador
@@ -101,6 +101,7 @@ export interface ReglaItinerarioResponseDTO {
 ---
 
 ## 6. Checklist de Implementación
-- [ ] Casos de uso de administración (`Crear`, `Actualizar`, `Listar`, `CambiarEstado`).
-- [ ] Controlador HTTP / Endpoints REST (`POST /api/itinerarios/reglas`, `GET /api/itinerarios/reglas`, `PUT /api/itinerarios/reglas/:id`, `PATCH /api/itinerarios/reglas/:id/estado`).
-- [ ] Tests unitarios en Vitest para todos los casos de uso.
+- [x] Casos de uso de administración (`Crear`, `Actualizar`, `Listar`, `CambiarEstado`).
+- [x] Controlador HTTP / Endpoints REST (`POST /api/itinerarios/reglas`, `GET /api/itinerarios/reglas`, `PUT /api/itinerarios/reglas/:id`, `PATCH /api/itinerarios/reglas/:id/estado`).
+- [x] Tests unitarios en Vitest para todos los casos de uso.
+

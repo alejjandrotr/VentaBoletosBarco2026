@@ -3,7 +3,7 @@
 ## 1. Metadata
 - **ID:** SPEC-011
 - **Título:** Pantallas de Administración de Plantillas de Itinerario y Panel de Despacho de Viajes
-- **Estado:** APROBADO
+- **Estado:** VERIFICADO
 - **Dependencias:** SPEC-006 (Diseño Atómico), SPEC-009 (CRUD Reglas), SPEC-010 (Control Viajes)
 - **Fecha:** 2026-10-04
 - **Autor:** Antigravity AI & Desarrollador
@@ -65,7 +65,8 @@ frontend/src/components/
 ---
 
 ## 5. Checklist de Implementación
-- [ ] Átomos y moléculas de administración creados en frontend.
-- [ ] Organismos de tabla de reglas y grilla de viajes operativos.
-- [ ] Vistas/Páginas integradas en el router del frontend (`/admin/itinerarios` y `/admin/viajes`).
-- [ ] Manejo de estados de carga, confirmaciones y mensajes de éxito/error.
+- [x] Átomos y moléculas de administración creados en frontend.
+- [x] Organismos de tabla de reglas y grilla de viajes operativos.
+- [x] Vistas/Páginas integradas en el router del frontend (`/admin/itinerarios` y `/admin/viajes`).
+- [x] Manejo de estados de carga, confirmaciones y mensajes de éxito/error.
+

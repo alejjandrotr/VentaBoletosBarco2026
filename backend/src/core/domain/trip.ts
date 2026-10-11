@@ -1,11 +1,13 @@
 import { TripCapacity } from '@core/domain/trip-capacity.js';
 import { TransportUnitProps } from '@core/domain/transport-unit.js';
 import { TripNotAvailableForSaleException } from '@core/domain/exceptions/trip-not-available-for-sale.exception.js';
+import { InvalidTripStatusTransitionException } from '@core/domain/exceptions/invalid-trip-status-transition.exception.js';
 
 export enum TripStatus {
   SCHEDULED = 'SCHEDULED',
   BOARDING = 'BOARDING',
   DEPARTED = 'DEPARTED',
+  FINALIZED = 'FINALIZED',
   CANCELLED = 'CANCELLED',
 }
 
@@ -64,12 +66,48 @@ export class Trip {
   public validateForSale(): void {
     if (
       this.status === TripStatus.DEPARTED ||
+      this.status === TripStatus.FINALIZED ||
       this.status === TripStatus.CANCELLED
     ) {
       throw new TripNotAvailableForSaleException(
         `El viaje ${this.tripId} no está disponible para venta. Estado actual: ${this.status}`,
       );
     }
+  }
+
+  public changeStatus(newStatus: TripStatus): void {
+    if (this.status === newStatus) {
+      return;
+    }
+
+    if (
+      this.status === TripStatus.FINALIZED ||
+      this.status === TripStatus.CANCELLED
+    ) {
+      throw new InvalidTripStatusTransitionException(
+        `No se puede modificar el estado de un viaje ${this.status}.`,
+      );
+    }
+
+    if (newStatus === TripStatus.BOARDING && this.status !== TripStatus.SCHEDULED) {
+      throw new InvalidTripStatusTransitionException(
+        `Solo se puede iniciar embarque (BOARDING) desde estado SCHEDULED. Estado actual: ${this.status}`,
+      );
+    }
+
+    if (newStatus === TripStatus.DEPARTED && this.status !== TripStatus.BOARDING) {
+      throw new InvalidTripStatusTransitionException(
+        `Solo se puede zarpar (DEPARTED) desde estado BOARDING. Estado actual: ${this.status}`,
+      );
+    }
+
+    if (newStatus === TripStatus.FINALIZED && this.status !== TripStatus.DEPARTED) {
+      throw new InvalidTripStatusTransitionException(
+        `Solo se puede finalizar un viaje (FINALIZED) desde estado DEPARTED. Estado actual: ${this.status}`,
+      );
+    }
+
+    this.status = newStatus;
   }
 
   public getTripId(): string {

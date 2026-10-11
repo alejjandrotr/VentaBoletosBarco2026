@@ -3,7 +3,7 @@
 ## 1. Metadata
 - **ID:** SPEC-010
 - **Título:** Visualización, Disparador Manual de Viajes y Control de Ciclo de Vida Operativo
-- **Estado:** APROBADO
+- **Estado:** VERIFICADO
 - **Dependencias:** SPEC-008 (Generador de Viajes), SPEC-009 (Reglas de Itinerario)
 - **Fecha:** 2026-10-04
 - **Autor:** Antigravity AI & Desarrollador
@@ -93,6 +93,7 @@ export interface CambiarEstadoViajeDTO {
 ---
 
 ## 6. Checklist de Implementación
-- [ ] Casos de uso de control operativo de viajes (`ConsultarViajesPorFecha`, `InicializarViajesFecha`, `CambiarEstadoViaje`).
-- [ ] Endpoints REST (`GET /api/admin/viajes?fecha=YYYY-MM-DD`, `POST /api/admin/viajes/inicializar`, `PATCH /api/admin/viajes/:id/estado`).
-- [ ] Pruebas unitarias de las transiciones de estado.
+- [x] Casos de uso de control operativo de viajes (`ConsultarViajesPorFecha`, `InicializarViajesFecha`, `CambiarEstadoViaje`).
+- [x] Endpoints REST (`GET /api/admin/viajes?fecha=YYYY-MM-DD`, `POST /api/admin/viajes/inicializar`, `PATCH /api/admin/viajes/:id/estado`).
+- [x] Pruebas unitarias de las transiciones de estado.
+
