@@ -8,7 +8,7 @@ import { CrearReglaItinerarioUseCase } from '@core/use-cases/crear-regla-itinera
 import { ActualizarReglaItinerarioUseCase } from '@core/use-cases/actualizar-regla-itinerario.use-case.js';
 import { CambiarEstadoReglaItinerarioUseCase } from '@core/use-cases/cambiar-estado-regla-itinerario.use-case.js';
 import { ListarReglasItinerarioUseCase } from '@core/use-cases/listar-reglas-itinerario.use-case.js';
-import { NotFoundException, BadRequestException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 
 describe('ReglasItinerarioController (HTTP Adapter)', () => {
   let controller: ReglasItinerarioController;
